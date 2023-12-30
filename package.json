@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
+    "commit": "cz",
+    "release": "standard-version --no-verify",
     "pull": "drizzle-kit introspect:pg",
     "push": "drizzle-kit push:pg",
     "generate": "drizzle-kit generate:pg",
@@ -14,7 +17,13 @@
     "check": "drizzle-kit check:pg",
     "up": "drizzle-kit up:pg",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky install"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
@@ -51,6 +60,9 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/cz-commitlint": "^18.4.3",
     "@storybook/addon-actions": "^7.6.6",
     "@storybook/addon-essentials": "^7.6.6",
     "@storybook/addon-interactions": "^7.6.6",
@@ -68,6 +80,7 @@
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "autoprefixer": "^10.0.1",
+    "commitizen": "^4.3.0",
     "drizzle-kit": "^0.20.7",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
@@ -77,8 +90,12 @@
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": ">=7",
+    "inquirer": "^8.2.5",
+    "lint-staged": ">=10",
     "postcss": "^8",
     "prettier": "^3.1.1",
+    "standard-version": "^9.5.0",
     "storybook": "^7.6.6",
     "tailwindcss": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
@@ -88,5 +105,8 @@
     "patchedDependencies": {
       "drizzle-kit@0.20.7": "patches/drizzle-kit@0.20.7.patch"
     }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
