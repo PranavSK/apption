@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+
+    @apply bg-teal1 dark:bg-dark-teal1 text-sage12 dark:text-dark-sage12;
+  }
+}
